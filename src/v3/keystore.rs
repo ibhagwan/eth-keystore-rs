@@ -15,6 +15,7 @@ pub struct EthKeystoreV3 {
 
     pub crypto: CryptoJson,
     pub id: Uuid,
+    pub version: u8,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

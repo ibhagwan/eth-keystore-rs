@@ -42,7 +42,7 @@ where
             salt,
         } => {
             let mut key = vec![0u8; dklen as usize];
-            pbkdf2::<Hmac<Sha256>>(password.as_ref(), &salt, c, key.as_mut_slice());
+            pbkdf2::<Hmac<Sha256>>(password.as_ref(), &salt, c, key.as_mut_slice())?;
             key
         }
         KdfparamsType::Scrypt {
@@ -54,7 +54,7 @@ where
         } => {
             let mut key = vec![0u8; dklen as usize];
             let log_n = (n as f32).log2() as u8;
-            let scrypt_params = ScryptParams::new(log_n, r, p)?;
+            let scrypt_params = ScryptParams::new(log_n, r, p, ScryptParams::RECOMMENDED_LEN)?;
             scrypt(password.as_ref(), &salt, &scrypt_params, key.as_mut_slice())?;
             key
         }
@@ -111,6 +111,7 @@ where
         DEFAULT_KDF_PARAMS_LOG_N,
         DEFAULT_KDF_PARAMS_R,
         DEFAULT_KDF_PARAMS_P,
+        ScryptParams::RECOMMENDED_LEN,
     )?;
     scrypt(password.as_ref(), &salt, &scrypt_params, key.as_mut_slice())?;
 
@@ -148,7 +149,6 @@ where
         pubkey,
         path,
         version,
-        // version: 3,
         crypto: CryptoJson {
             kdf: Kdf {
                 function: KdfType::Scrypt,
