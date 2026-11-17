@@ -13,9 +13,6 @@ mod utils;
 pub mod v3;
 pub mod v4;
 
-#[cfg(feature = "geth-compat")]
-use utils::geth_compat::address_from_pk;
-
 pub use error::KeystoreError;
 
 /// Creates a new JSON keystore using the [Scrypt](https://tools.ietf.org/html/rfc7914.html)
