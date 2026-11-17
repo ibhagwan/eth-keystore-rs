@@ -99,7 +99,7 @@ where
     };
 
     let bls_pk = bls_sk.sk_to_pk().compress();
-    let pubkey = hex::encode(&bls_pk);
+    let pubkey = hex::encode(bls_pk);
 
     // Generate a random salt.
     let mut salt = vec![0u8; DEFAULT_KEY_SIZE];

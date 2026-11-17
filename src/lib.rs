@@ -31,7 +31,7 @@ pub use error::KeystoreError;
 ///
 /// # async fn foobar() -> Result<(), Box<dyn std::error::Error>> {
 /// let dir = Path::new("./keys");
-/// let mut rng = rand::thread_rng();
+/// let mut rng = rand::rng();
 /// // here `None` signifies we don't specify a filename for the keystore.
 /// // the default filename is a generated Uuid for the keystore.
 /// let (private_key, name) = new(&dir, &mut rng, "password_to_keystore", None)?;
@@ -95,12 +95,12 @@ where
 ///
 /// ```no_run
 /// use eth_keystore::encrypt_key;
-/// use rand::RngCore;
+/// use rand::Rng;
 /// use std::path::Path;
 ///
 /// # async fn foobar() -> Result<(), Box<dyn std::error::Error>> {
 /// let dir = Path::new("./keys");
-/// let mut rng = rand::thread_rng();
+/// let mut rng = rand::rng();
 ///
 /// // Construct a 32-byte random private key.
 /// let mut private_key = vec![0u8; 32];

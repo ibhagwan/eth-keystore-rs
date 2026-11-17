@@ -18,8 +18,7 @@ digest = "0.10.7"
 hex = "0.4.3"
 hmac = "0.12.1"
 pbkdf2 = { version = "0.12.2", default-features = false }
-rand = { version = "0.8.5", default-features = false, features = ["getrandom"] }
-# rand = { version = "0.9.0", default-features = false, features = ["os_rng", "thread_rng"] }
+rand = { version = "0.10", default-features = false }
 scrypt = { version = "0.11.0", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
@@ -37,4 +36,4 @@ blst = "0.3.14"
 geth-compat = ["ethereum-types", "k256", "k256/ecdsa"]
 
 [dev-dependencies]
-rand = { version = "0.8.5", default-features = false, features = ["std", "std_rng", "getrandom"] }
+rand = "0.10"

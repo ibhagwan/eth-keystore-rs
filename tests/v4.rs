@@ -47,7 +47,7 @@ mod tests {
     //         Vec::from_hex("000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f")
     //             .unwrap();
     //     let dir = Path::new("./tests/test-keys");
-    //     let mut rng = rand::thread_rng();
+    //     let mut rng = rand::rng();
     //     let name = encrypt_key(&dir, &mut rng, &secret, "newpassword", None).unwrap();
     //
     //     let keypath = dir.join(&name);

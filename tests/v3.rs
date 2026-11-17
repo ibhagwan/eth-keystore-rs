@@ -8,7 +8,7 @@ mod tests {
     #[test]
     fn test_new() {
         let dir = Path::new("./tests/test-keys");
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
         let (secret, id) = new(&dir, &mut rng, "thebestrandompassword", None).unwrap();
 
         let keypath = dir.join(&id);
@@ -24,7 +24,7 @@ mod tests {
     #[test]
     fn test_new_with_name() {
         let dir = Path::new("./tests/test-keys");
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
         let name = "my_keystore";
         let (secret, _id) = new(&dir, &mut rng, "thebestrandompassword", Some(name)).unwrap();
 
@@ -65,7 +65,7 @@ mod tests {
             Vec::from_hex("7a28b5ba57c53603b0b07b56bba752f7784bf506fa95edc395f5cf6c7514fe9d")
                 .unwrap();
         let dir = Path::new("./tests/test-keys");
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
         let name = encrypt_key(&dir, &mut rng, &secret, "newpassword", None).unwrap();
 
         let keypath = dir.join(&name);
